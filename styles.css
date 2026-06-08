@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --azul-keida:#17345c;
+    --turquesa:#39c6c6;
+    --turquesa-claro:#c9eef2;
+    --fondo:#f4fbfc;
+    --blanco:#ffffff;
+    --texto:#17345c;
+    --gris:#e8f3f5;
+}
+
+body{
+    min-height:100vh;
+    background:var(--fondo);
+    font-family:'Quicksand', Arial, sans-serif;
+    color:var(--texto);
+    padding:20px;
+}
+
+.logo-keida{
+    width:110px;
+    position:absolute;
+    top:20px;
+    left:25px;
+}
+
+header{
+    text-align:center;
+    padding:35px 10px 20px;
+}
+
+header h1{
+    font-size:36px;
+    color:var(--azul-keida);
+    font-weight:700;
+}
+
+nav{
+    max-width:900px;
+    margin:0 auto 25px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:10px;
+}
+
+nav label{
+    background:none;
+    border:none;
+    padding:0;
+    margin:0;
+    font-weight:600;
+    color:var(--azul-keida);
+}
+
+select{
+    padding:10px 18px;
+    border:1px solid var(--gris);
+    border-radius:30px;
+    background:var(--blanco);
+    color:var(--azul-keida);
+    font-family:'Quicksand', Arial, sans-serif;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,.08);
+}
+
+main{
+    display:flex;
+    justify-content:center;
+}
+
+section{
+    width:100%;
+    max-width:900px;
+    background:var(--blanco);
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(23,52,92,.12);
+    border-top:6px solid var(--turquesa);
+}
+
+h2{
+    font-size:28px;
+    margin-bottom:28px;
+    text-align:center;
+    color:var(--azul-keida);
+}
+
+
+/* OPCIONES DEL TEST */
+
+.language-options{
+    display:none;
+}
+
+.language-menu.activo .language-options{
+    display:block;
+}
+
+label{
+    display:block;
+    margin-bottom:14px;
+    padding:14px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:500;
+    background:#dff5f8;
+    border:1px solid #c6e9ef;
+    transition:
+    background .4s ease,
+    box-shadow .4s ease,
+    transform .4s ease;
+}
+
+label:hover{
+    background:#d1f0f4;
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(0,120,180,.12);
+}
+
+input[type="radio"]{
+    margin-right:10px;
+    accent-color:#39c6c6;
+}
+
+@keyframes keidaOcean{
+    0%{background-position:0% 50%;}
+    20%{background-position:100% 0%;}
+    40%{background-position:100% 100%;}
+    60%{background-position:0% 100%;}
+    80%{background-position:50% 0%;}
+    100%{background-position:0% 50%;}
+}
+
+label:has(input[type="radio"]:checked){
+
+    background:linear-gradient(
+        135deg,
+        #021524,
+        #063970,
+        #0a5ea8,
+        #0077b6,
+        #0096c7,
+        #00a8a8,
+        #4dd0cf,
+        #6dd5ed,
+        #00a8a8,
+        #0096c7,
+        #0a5ea8,
+        #021524
+    );
+
+    background-size:1400% 1400%;
+    animation:keidaOcean 14s ease infinite;
+
+    border:2px solid #6dd5ed;
+
+    color:#ffffff;
+    text-shadow:
+        0 1px 2px rgba(0,0,0,.25);
+
+    font-weight:700;
+
+    box-shadow:
+        0 0 6px rgba(0,168,204,.15),
+        0 0 12px rgba(0,200,151,.10),
+        0 0 18px rgba(109,213,237,.08);
+
+    transform:scale(1.03);
+}
+
+
+button{
+    margin-top:15px;
+    background:var(--turquesa);
+    color:var(--azul-keida);
+    border:none;
+    padding:14px 28px;
+    border-radius:30px;
+    font-family:'Quicksand', Arial, sans-serif;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:var(--azul-keida);
+    color:white;
+}
+
+#mensajeError{
+    color:#d63031;
+    margin-top:18px;
+    font-weight:700;
+    text-align:center;
+}
+
+p{
+    font-size:18px;
+    line-height:1.6;
+    text-align:center;
+}
+
+a{
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+/* TABLET */
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .logo-keida{
+        width:95px;
+    }
+
+    header h1{
+        font-size:30px;
+    }
+
+    section{
+        padding:25px;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+}
+
+/* MOVIL */
+
+@media(max-width:480px){
+
+    body{
+        padding:10px;
+    }
+
+    .logo-keida{
+        position:static;
+        display:block;
+        margin:0 auto 10px auto;
+        width:85px;
+    }
+
+    header{
+        padding:10px 0 20px;
+    }
+
+    header h1{
+        font-size:26px;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    select{
+        width:100%;
+    }
+
+    section{
+        padding:20px;
+        border-radius:14px;
+    }
+
+    h2{
+        font-size:22px;
+    }
+
+    button{
+        width:100%;
+    }
+
+}
+
+/* MOVIL PEQUEÑO */
+
+@media(max-width:320px){
+
+    body{
+        padding:5px;
+    }
+
+    button,
+    select{
+        width:100%;
+    }
+
+} 
+
+body{
+background:
+radial-gradient(circle at top left, rgba(57,198,198,.35), transparent 35%),
+radial-gradient(circle at bottom right, rgba(23,52,92,.18), transparent 35%),
+linear-gradient(180deg,#e9fbfd 0%,#f8feff 45%,#eaf8fb 100%);
+background-attachment:fixed;
+}
+
+section{
+    width:100%;
+    max-width:900px;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,0.98),
+        rgba(247,253,255,0.98)
+    );
+
+    padding:35px;
+
+    border-radius:22px;
+
+    border-top:4px solid #39c6c6;
+
+    box-shadow:
+        0 15px 35px rgba(23,52,92,.08),
+        0 5px 12px rgba(57,198,198,.05);
+
+    backdrop-filter:blur(4px);
+}
+
+header h1{
+letter-spacing:.5px;
+}
+
+select{
+border:1px solid rgba(57,198,198,.25);
+background:#fff;
+box-shadow:0 8px 20px rgba(23,52,92,.08);
+}
+
+select:hover{
+border-color:#39c6c6;
+}
+
+button{
+background:linear-gradient(135deg,#39c6c6,#6dd5ed) !important;
+box-shadow:0 8px 18px rgba(57,198,198,.18);
+}
+
+button:hover{
+background:linear-gradient(135deg,#17345c,#245a87) !important;
+color:white;
+}
+
+#mensajeError{
+background:#fff1f1;
+border:1px solid #ffcaca;
+padding:12px;
+border-radius:12px;
+max-width:500px;
+margin:18px auto 0;
+}
+
+.test-nav{
+    max-width:900px;
+    margin:0 auto 25px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.language-menu{
+    position:relative;
+}
+
+.language-current{
+    margin:0 !important;
+    background:#ffffff !important;
+    color:#17345c !important;
+    border:1px solid rgba(57,198,198,.20) !important;
+    border-radius:32px !important;
+    padding:10px 18px !important;
+    min-width:115px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    box-shadow:0 4px 14px rgba(23,52,92,.12) !important;
+}
+
+.language-current:hover{
+    background:#ffffff !important;
+    color:#17345c !important;
+    box-shadow:0 6px 18px rgba(23,52,92,.16) !important;
+    transform:none !important;
+}
+
+.language-options{
+    position:absolute;
+    top:48px;
+    right:0;
+    width:115px;
+    background:#ffffff;
+    border-radius:0 0 28px 28px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(23,52,92,.15);
+    display:none;
+    z-index:50;
+}
+
+.language-options{
+    display:none;
+}
+
+.language-menu.activo .language-options{
+    display:block;
+}
+
+.language-options button{
+    width:100%;
+    margin:0;
+    padding:14px 10px;
+    background:white !important;
+    color:#17345c !important;
+    border:none;
+    border-radius:0;
+    box-shadow:none;
+    font-weight:700;
+}
+
+.language-options button:hover{
+    background:#eefbfd !important;
+    color:#17345c !important;
+    transform:none !important;
+}

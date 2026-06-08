@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de" translate="no">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <meta name="google"
+    content="notranslate">
+
+    <title>Frage 4</title>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Frage 4</h1>
+    </header>
+
+    <nav class="test-nav">
+
+    <div class="language-menu">
+
+        <button class="language-current" type="button">
+            <span id="currentLang">🇩🇪 DE</span>
+            <span>⌄</span>
+        </button>
+
+        <div class="language-options">
+
+            <button type="button" data-lang="es">🇪🇸 ES</button>
+            <button type="button" data-lang="en">🇬🇧 EN</button>
+            <button type="button" data-lang="fr">🇫🇷 FR</button>
+            <button type="button" data-lang="de">🇩🇪 DE</button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+    <main>
+
+        <section>
+
+            <h2>
+                Wie war Ihre allgemeine Erfahrung mit dem Service?
+            </h2>
+
+            <form id="formPregunta4">
+
+                <label>
+                    <input type="radio" name="valoracion" value="1">
+                    1 - Sehr schlecht
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="radio" name="valoracion" value="2">
+                    2 - Schlecht
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="radio" name="valoracion" value="3">
+                    3 - Durchschnittlich
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="radio" name="valoracion" value="4">
+                    4 - Gut
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="radio" name="valoracion" value="5">
+                    5 - Ausgezeichnet
+                </label>
+
+                <br><br>
+
+                <button type="submit">
+                    Nächste Frage
+                </button>
+
+            </form>
+
+            <p id="mensajeError"></p>
+
+        </section>
+
+    </main>
+
+<script>
+
+const menuIdioma =
+document.querySelector(".language-menu");
+
+const botonActual =
+document.querySelector(".language-current");
+
+const botonesIdioma =
+document.querySelectorAll("[data-lang]");
+
+const textoIdioma =
+document.getElementById("currentLang");
+
+const idiomasTexto = {
+    es: "🇪🇸 ES",
+    en: "🇬🇧 EN",
+    fr: "🇫🇷 FR",
+    de: "🇩🇪 DE"
+};
+
+if(botonActual){
+
+    botonActual.addEventListener("click", () => {
+
+        menuIdioma.classList.toggle("activo");
+
+    });
+
+}
+
+window.addEventListener("load", () => {
+
+    const idiomaGuardado =
+    localStorage.getItem("idioma") ||
+    document.documentElement.lang;
+
+    if(textoIdioma){
+
+        textoIdioma.textContent =
+        idiomasTexto[idiomaGuardado];
+
+    }
+
+});
+
+botonesIdioma.forEach((boton) => {
+
+    boton.addEventListener("click", () => {
+
+        const idioma =
+        boton.dataset.lang;
+
+        localStorage.setItem("idioma", idioma);
+
+        const archivoActual =
+        window.location.pathname.split("/").pop();
+
+        window.location.href =
+        `../${idioma}/${archivoActual}`;
+
+    });
+
+});
+
+document.addEventListener("click", (e) => {
+
+    if(
+        menuIdioma &&
+        !menuIdioma.contains(e.target)
+    ){
+
+        menuIdioma.classList.remove("activo");
+
+    }
+
+});
+
+</script>
+
+<script src="../submit-client.js"></script>
+
+</body>
+
+</html>
+

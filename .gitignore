@@ -1,0 +1,6 @@
+node_modules/
+responses.db
+pending_inserts.sql
+qr_public_mobile.html
+.DS_Store
+.env

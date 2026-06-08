@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <meta name="google"
+    content="notranslate">
+
+    <title>Inicio</title>
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Inicio</h1>
+    </header>
+
+    <nav class="test-nav">
+
+    <div class="language-menu">
+
+        <button class="language-current" type="button">
+            <span id="currentLang">🇪🇸 ES</span>
+            <span>⌄</span>
+        </button>
+
+        <div class="language-options">
+
+            <button type="button" data-lang="es">🇪🇸 ES</button>
+            <button type="button" data-lang="en">🇬🇧 EN</button>
+            <button type="button" data-lang="fr">🇫🇷 FR</button>
+            <button type="button" data-lang="de">🇩🇪 DE</button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+    <main>
+
+        <section>
+
+            <p>
+                Bienvenido al test de satisfacción.
+            </p>
+
+            <a href="PREGUNTA1.html">
+
+                <button id="btnInicio">
+                    Iniciar Test
+                </button>
+
+            </a>
+
+        </section>
+
+    </main>
+
+<script>
+
+const menuIdioma =
+document.querySelector(".language-menu");
+
+const botonActual =
+document.querySelector(".language-current");
+
+const botonesIdioma =
+document.querySelectorAll("[data-lang]");
+
+const textoIdioma =
+document.getElementById("currentLang");
+
+const idiomasTexto = {
+    es: "🇪🇸 ES",
+    en: "🇬🇧 EN",
+    fr: "🇫🇷 FR",
+    de: "🇩🇪 DE"
+};
+
+if(botonActual){
+
+    botonActual.addEventListener("click", () => {
+
+        menuIdioma.classList.toggle("activo");
+
+    });
+
+}
+
+window.addEventListener("load", () => {
+
+    const idiomaGuardado =
+    localStorage.getItem("idioma") ||
+    document.documentElement.lang;
+
+    if(textoIdioma){
+
+        textoIdioma.textContent =
+        idiomasTexto[idiomaGuardado];
+
+    }
+
+});
+
+botonesIdioma.forEach((boton) => {
+
+    boton.addEventListener("click", () => {
+
+        const idioma =
+        boton.dataset.lang;
+
+        localStorage.setItem("idioma", idioma);
+
+        const archivoActual =
+        window.location.pathname.split("/").pop();
+
+        window.location.href =
+        `../${idioma}/${archivoActual}`;
+
+    });
+
+});
+
+document.addEventListener("click", (e) => {
+
+    if(
+        menuIdioma &&
+        !menuIdioma.contains(e.target)
+    ){
+
+        menuIdioma.classList.remove("activo");
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
