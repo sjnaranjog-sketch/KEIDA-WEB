@@ -7,6 +7,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
+// Middleware to ensure UTF-8 charset for all responses
+app.use((req, res, next) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  next();
+});
+
 app.use(express.static(path.join(__dirname)));
 
 app.post('/submit', async (req, res) => {

@@ -19,6 +19,16 @@
 
 <body>
 
+        <div class="logo-wrapper">
+
+    <div class="logo-ellipse"></div>
+
+    <img src="../img/logo.png"
+         class="logo-keida"
+         alt="KEIDA logo">
+
+</div>
+
     <header>
         <h1>Thank You</h1>
     </header>
@@ -28,16 +38,16 @@
     <div class="language-menu">
 
         <button class="language-current" type="button">
-            <span id="currentLang">🇬🇧 EN</span>
+            <span id="currentLang">EN</span>
             <span>⌄</span>
         </button>
 
         <div class="language-options">
 
-            <button type="button" data-lang="es">🇪🇸 ES</button>
-            <button type="button" data-lang="en">🇬🇧 EN</button>
-            <button type="button" data-lang="fr">🇫🇷 FR</button>
-            <button type="button" data-lang="de">🇩🇪 DE</button>
+            <button type="button" data-lang="es">ES</button>
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+            <button type="button" data-lang="de">DE</button>
 
         </div>
 
@@ -61,6 +71,8 @@
                 We appreciate your time and cooperation.
             </p>
 
+            <a href="https://www.keida.es/" id="btnVolver"><button id="btnInicio"> Back to Home </button></a>
+
         </section>
 
     </main>
@@ -80,10 +92,10 @@ const textoIdioma =
 document.getElementById("currentLang");
 
 const idiomasTexto = {
-    es: "🇪🇸 ES",
-    en: "🇬🇧 EN",
-    fr: "🇫🇷 FR",
-    de: "🇩🇪 DE"
+    es: "ES",
+    en: "EN",
+    fr: "FR",
+    de: "DE"
 };
 
 if(botonActual){
@@ -145,6 +157,7 @@ document.addEventListener("click", (e) => {
 
 </script>
 
-</body>
+    <script src="../prevent-back.js"></script>
+  </body>
 
 </html>

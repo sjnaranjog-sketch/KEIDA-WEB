@@ -25,10 +25,11 @@ body{
 }
 
 .logo-keida{
-    width:110px;
+    width:180px;
     position:absolute;
-    top:20px;
-    left:25px;
+    top:12px;
+    left:20px;
+    z-index:10;
 }
 
 header{
@@ -94,6 +95,28 @@ h2{
     color:var(--azul-keida);
 }
 
+h2::after{
+
+    content:"";
+
+    display:block;
+
+    width:80px;
+    height:4px;
+
+    margin:14px auto 0;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #39c6c6,
+        #6dd5ed
+    );
+
+}
+
 
 /* OPCIONES DEL TEST */
 
@@ -122,13 +145,43 @@ label{
 
 label:hover{
     background:#d1f0f4;
-    transform:translateY(-2px);
+    transform:
+translateY(-3px)
+scale(1.01);
     box-shadow:0 6px 18px rgba(0,120,180,.12);
 }
 
 input[type="radio"]{
-    margin-right:10px;
-    accent-color:#39c6c6;
+
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+
+}
+
+input[type="text"], textarea, select {
+    width:100%;
+    max-width:100%;
+    padding:14px 16px;
+    border:1px solid rgba(23,52,92,.14);
+    border-radius:14px;
+    background:#fff;
+    font-size:1rem;
+    color:var(--azul-keida);
+    font-family:'Quicksand', Arial, sans-serif;
+    box-shadow:0 6px 18px rgba(23,52,92,.06);
+    transition:border-color .25s ease, box-shadow .25s ease;
+}
+
+textarea {
+    min-height:120px;
+    resize:vertical;
+}
+
+input[type="text"], textarea, select:focus {
+    outline:none;
+    border-color:var(--turquesa);
+    box-shadow:0 0 0 4px rgba(57,198,198,.12);
 }
 
 @keyframes keidaOcean{
@@ -228,7 +281,7 @@ img{
     }
 
     .logo-keida{
-        width:95px;
+        width:140px;
     }
 
     header h1{
@@ -249,23 +302,28 @@ img{
 
 @media(max-width:480px){
 
+    html{
+        -webkit-text-size-adjust:100%;
+    }
+
     body{
-        padding:10px;
+        padding:12px;
     }
 
     .logo-keida{
         position:static;
         display:block;
-        margin:0 auto 10px auto;
-        width:85px;
+        margin:0 auto 12px auto;
+        width:140px;
     }
 
     header{
-        padding:10px 0 20px;
+        padding:8px 0 18px;
     }
 
     header h1{
-        font-size:26px;
+        font-size:28px;
+        line-height:1.25;
     }
 
     nav{
@@ -273,23 +331,94 @@ img{
         gap:8px;
     }
 
-    select{
-        width:100%;
+    .test-nav{
+        justify-content:center;
+        margin-bottom:18px;
+    }
+
+    .language-current{
+        width:100% !important;
+        min-width:100% !important;
+        min-height:48px;
+    }
+
+    .language-options{
+        width:100% !important;
+        left:0;
+        right:auto;
+    }
+
+    .language-options button{
+        min-height:50px;
     }
 
     section{
-        padding:20px;
-        border-radius:14px;
+        width:100%;
+        max-width:100%;
+        padding:22px 18px;
+        border-radius:18px;
     }
 
     h2{
-        font-size:22px;
+        font-size:21px;
+        line-height:1.45;
+        margin-bottom:24px;
+    }
+
+    h2::after{
+        width:65px;
+        height:3px;
+    }
+
+    label{
+        min-height:58px;
+        padding:16px 18px;
+        font-size:1rem;
+        line-height:1.5;
+        display:flex;
+        align-items:center;
+    }
+
+    label:hover{
+        transform:none;
+    }
+
+    input[type="radio"]{
+        transform:scale(1.2);
+        margin-right:12px;
+    }
+
+    label:has(input[type="radio"]:checked){
+        transform:scale(1.015);
     }
 
     button{
         width:100%;
+        min-height:56px;
+        padding:16px 18px;
+        font-size:1rem;
     }
 
+    p{
+        font-size:1rem;
+    }
+
+    input[type="text"], textarea, select{
+        padding:16px 16px;
+        font-size:1rem;
+    }
+
+    .progress-bar{
+        height:10px;
+        margin-bottom:22px;
+    }
+
+    body::after{
+        width:280px;
+        height:280px;
+        bottom:-80px;
+        left:-80px;
+    }
 }
 
 /* MOVIL PEQUEÑO */
@@ -309,9 +438,23 @@ img{
 
 body{
 background:
-radial-gradient(circle at top left, rgba(57,198,198,.35), transparent 35%),
-radial-gradient(circle at bottom right, rgba(23,52,92,.18), transparent 35%),
-linear-gradient(180deg,#e9fbfd 0%,#f8feff 45%,#eaf8fb 100%);
+radial-gradient(circle at top left,
+    rgba(57,198,198,0.34) 0%,
+    rgba(57,198,198,0.10) 35%,
+    transparent 55%),
+
+radial-gradient(circle at top right,
+    rgba(109,213,237,0.30) 0%,
+    rgba(109,213,237,0.08) 40%,
+    transparent 60%),
+
+linear-gradient(
+    180deg,
+    rgba(225,250,250,1) 0%,
+    rgba(210,243,249,1) 45%,
+    rgba(245,255,255,1) 100%
+);
+
 background-attachment:fixed;
 }
 
@@ -322,24 +465,86 @@ section{
     background:linear-gradient(
         180deg,
         rgba(255,255,255,0.98),
-        rgba(247,253,255,0.98)
+        rgba(235,251,253,0.96)
     );
 
     padding:35px;
 
     border-radius:22px;
 
-    border-top:4px solid #39c6c6;
+    border-top:8px solid transparent;
+border-image:
+linear-gradient(
+90deg,
+#39c6c6,
+#6dd5ed,
+#39c6c6
+) 1;
+
+/* Caja estilizada para el título de la pregunta */
+.question-box{
+    display:inline-block;
+    padding:14px 36px;
+    border-radius:999px; /* forma totalmente redondeada (pill) */
+    border:1px solid rgba(57,198,198,0.14);
+    background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(242,253,255,0.95));
+    color:var(--azul-keida);
+    font-weight:700;
+    box-shadow: 0 10px 30px rgba(57,198,198,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+    margin:0 auto 18px;
+    letter-spacing:0.2px;
+    font-size:1.35rem;
+    max-width:calc(100% - 48px);
+    text-align:center;
+    line-height:1.1;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+/* Ajustes responsivos para la caja */
+@media (max-width:768px){
+    .question-box{
+        display:block;
+        width:auto;
+        padding:12px 22px;
+        font-size:1.15rem;
+        margin:0 auto 14px;
+    }
+}
+
+@media (max-width:480px){
+    .question-box{
+        padding:10px 16px;
+        font-size:1.05rem;
+    }
+}
 
     box-shadow:
         0 15px 35px rgba(23,52,92,.08),
         0 5px 12px rgba(57,198,198,.05);
 
-    backdrop-filter:blur(4px);
+    backdrop-filter:blur(10px);
 }
 
 header h1{
-letter-spacing:.5px;
+letter-spacing:1px;
+font-size:42px;
+font-weight:700;
+}
+
+header h1::after{
+content:"";
+display:block;
+width:90px;
+height:4px;
+margin:15px auto 0;
+border-radius:10px;
+
+background:
+linear-gradient(
+90deg,
+#39c6c6,
+#6dd5ed
+);
 }
 
 select{
@@ -353,8 +558,18 @@ border-color:#39c6c6;
 }
 
 button{
-background:linear-gradient(135deg,#39c6c6,#6dd5ed) !important;
-box-shadow:0 8px 18px rgba(57,198,198,.18);
+background:
+linear-gradient(
+135deg,
+#39c6c6,
+#5ccfd9,
+#6dd5ed
+) !important;
+
+box-shadow:
+0 12px 25px rgba(57,198,198,.20),
+0 4px 8px rgba(23,52,92,.08);
+
 }
 
 button:hover{
@@ -389,7 +604,7 @@ margin:18px auto 0;
     border:1px solid rgba(57,198,198,.20) !important;
     border-radius:32px !important;
     padding:10px 18px !important;
-    min-width:115px;
+    min-width:140px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -409,7 +624,7 @@ margin:18px auto 0;
     position:absolute;
     top:48px;
     right:0;
-    width:115px;
+    width:140px;
     background:#ffffff;
     border-radius:0 0 28px 28px;
     overflow:hidden;
@@ -442,4 +657,110 @@ margin:18px auto 0;
     background:#eefbfd !important;
     color:#17345c !important;
     transform:none !important;
+}
+
+body::before{
+content:"";
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:4px;
+
+background:
+linear-gradient(
+90deg,
+#17345c,
+#39c6c6,
+#6dd5ed,
+#39c6c6,
+#17345c
+);
+
+z-index:9999;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+section{
+    animation:aparecer .8s ease;
+}
+
+.progress-bar{
+    width:100%;
+    height:8px;
+    background:#dff5f8;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:25px;
+}
+
+.progress-fill{
+    height:100%;
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        #39c6c6,
+        #6dd5ed
+    );
+}
+
+label:has(input[type="radio"]:checked){
+
+    animation:
+    keidaOcean 14s ease infinite,
+    seleccion .35s ease;
+
+    transform:scale(1.015);
+}
+
+@keyframes seleccion{
+
+    0%{
+        transform:scale(.98);
+    }
+
+    100%{
+        transform:scale(1.015);
+    }
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    bottom:-100px;
+    left:-100px;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        rgba(57,198,198,.08),
+        transparent 70%
+    );
+
+    pointer-events:none;
 }

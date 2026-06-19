@@ -4,7 +4,11 @@ const localtunnel = require('localtunnel');
 async function main() {
   const targetPath = process.argv[2] || 'fr/PREGUNTA1.html';
   const localUrl = `http://localhost:3000/${targetPath}`;
-  const tunnel = await localtunnel({ port: 3000 });
+  const tunnel = await localtunnel({ port: 3000 });  tunnel.on('error', err => {
+    console.error('Error en el túnel localtunnel:', err.message || err);
+    console.error('Verifica tu conexión a Internet y el firewall.');
+    process.exit(1);
+  });
   const publicUrl = `${tunnel.url}/${targetPath}`.replace(/\/\/+$/, '');
 
   console.log('Servidor local:', localUrl);
@@ -31,7 +35,7 @@ async function main() {
     <p>Abre la prueba desde tu móvil con redes móviles</p>
     <img src="${qrSrc}" alt="QR público para móvil">
     <p><a href="${publicUrl}">${publicUrl}</a></p>
-    <p style="font-size:.9rem;color:#555;">Asegúrate de tener `npm start` corriendo en la PC antes de usar el QR.</p>
+    <p style="font-size:.9rem;color:#555;">Asegúrate de tener \`npm start\` corriendo en la PC antes de usar el QR.</p>
   </div>
 </body>
 </html>`;

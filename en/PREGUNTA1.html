@@ -1,190 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
-
-<head>
-
+  <head>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="/styles.css">
-
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-    <meta name="google"
-    content="notranslate">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>Question 1</title>
+  </head>
+  <body>
+        <div class="logo-wrapper">
 
-</head>
+    <div class="logo-ellipse"></div>
 
-<body>
+    <img src="../img/logo.png"
+         class="logo-keida"
+         alt="KEIDA logo">
 
+</div>
     <header>
-        <h1>Question 1</h1>
+      <h1>Question 1</h1>
     </header>
-
     <nav class="test-nav">
-
-    <div class="language-menu">
-
+      <div class="language-menu">
         <button class="language-current" type="button">
-            <span id="currentLang">🇬🇧 EN</span>
-            <span>⌄</span>
+          <span id="currentLang">EN</span>
+          <span>⌄</span>
         </button>
-
         <div class="language-options">
-
-            <button type="button" data-lang="es">🇪🇸 ES</button>
-            <button type="button" data-lang="en">🇬🇧 EN</button>
-            <button type="button" data-lang="fr">🇫🇷 FR</button>
-            <button type="button" data-lang="de">🇩🇪 DE</button>
-
+          <button type="button" data-lang="es">ES</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="fr">FR</button>
+          <button type="button" data-lang="de">DE</button>
         </div>
-
-    </div>
-
-</nav>
-
+      </div>
+    </nav>
     <main>
-
-        <section>
-
-            <h2>
-                How was your experience with the rented equipment?
-            </h2>
-
-            <form id="formPregunta1">
-
+      <section>
+        <h2> How was your experience with the rented equipment? </h2>
+        <form id="formPregunta1">
+          <label>
+            <input type="radio" name="valoracion" value="5"> 5 - Excellent </label>
+            <label>
+              <input type="radio" name="valoracion" value="4"> 4 - Good </label>
+              <label>
+                <input type="radio" name="valoracion" value="3"> 3 - Fair </label>
                 <label>
-                    <input type="radio" name="valoracion" value="1">
-                    1 - Very poor
-                </label>
-
-                <br><br>
-
-                <label>
-                    <input type="radio" name="valoracion" value="2">
-                    2 - Poor
-                </label>
-
-                <br><br>
-
-                <label>
-                    <input type="radio" name="valoracion" value="3">
-                    3 - Fair
-                </label>
-
-                <br><br>
-
-                <label>
-                    <input type="radio" name="valoracion" value="4">
-                    4 - Good
-                </label>
-
-                <br><br>
-
-                <label>
-                    <input type="radio" name="valoracion" value="5">
-                    5 - Excellent
-                </label>
-
-                <br><br>
-
-                <button type="submit">
-                    Next
-                </button>
-
-            </form>
-
-            <p id="mensajeError"></p>
-
-        </section>
-
-    </main>
-
-<script>
-
-const menuIdioma =
-document.querySelector(".language-menu");
-
-const botonActual =
-document.querySelector(".language-current");
-
-const botonesIdioma =
-document.querySelectorAll("[data-lang]");
-
-const textoIdioma =
-document.getElementById("currentLang");
-
-const idiomasTexto = {
-    es: "🇪🇸 ES",
-    en: "🇬🇧 EN",
-    fr: "🇫🇷 FR",
-    de: "🇩🇪 DE"
-};
-
-if(botonActual){
-
-    botonActual.addEventListener("click", () => {
-
-        menuIdioma.classList.toggle("activo");
-
-    });
-
-}
-
-window.addEventListener("load", () => {
-
-    const idiomaGuardado =
-    localStorage.getItem("idioma") ||
-    document.documentElement.lang;
-
-    if(textoIdioma){
-
-        textoIdioma.textContent =
-        idiomasTexto[idiomaGuardado];
-
-    }
-
-});
-
-botonesIdioma.forEach((boton) => {
-
-    boton.addEventListener("click", () => {
-
-        const idioma =
-        boton.dataset.lang;
-
-        localStorage.setItem("idioma", idioma);
-
-        const archivoActual =
-        window.location.pathname.split("/").pop();
-
-        window.location.href =
-        `../${idioma}/${archivoActual}`;
-
-    });
-
-});
-
-document.addEventListener("click", (e) => {
-
-    if(
-        menuIdioma &&
-        !menuIdioma.contains(e.target)
-    ){
-
-        menuIdioma.classList.remove("activo");
-
-    }
-
-});
-
-</script>
-
-<script src="../submit-client.js"></script>
-
-</body>
-
-</html>
-
+                  <input type="radio" name="valoracion" value="2"> 2 - Poor </label>
+                  <label>
+                    <input type="radio" name="valoracion" value="1"> 1 - Very poor </label>
+                    <br>
+                    <br>
+                    <button type="submit"> Next </button>
+                  </form>
+                  <p id="mensajeError">
+                  </p>
+                </section>
+              </main> <script> const menuIdioma =
+document.querySelector(".language-menu"); const botonActual =
+document.querySelector(".language-current"); const botonesIdioma =
+document.querySelectorAll("[data-lang]"); const textoIdioma =
+document.getElementById("currentLang"); const idiomasTexto = { es: " ES", en: " EN", fr: " FR", de: " DE"
+}; if(botonActual){ botonActual.addEventListener("click", () => { menuIdioma.classList.toggle("activo"); }); } window.addEventListener("load", () => { const idiomaGuardado = localStorage.getItem("idioma") || document.documentElement.lang; if(textoIdioma){ textoIdioma.textContent = idiomasTexto[idiomaGuardado]; } }); botonesIdioma.forEach((boton) => { boton.addEventListener("click", () => { const idioma = boton.dataset.lang; localStorage.setItem("idioma", idioma); const archivoActual = window.location.pathname.split("/").pop(); window.location.href = `../${idioma}/${archivoActual}`; }); }); document.addEventListener("click", (e) => { if( menuIdioma && !menuIdioma.contains(e.target) ){ menuIdioma.classList.remove("activo"); } }); </script> <script src="../submit-client.js"></script>
+    <script src="../prevent-back.js"></script> </body>
+            </html>
